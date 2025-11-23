@@ -7,11 +7,18 @@
 \usepackage{microtype}
 
 % --- Layout & Styling ---
+\usepackage[none]{hyphenat}
 \usepackage[left=1in,top=0.8in,right=1in,bottom=0.8in]{geometry} % Standard letter margins
 \usepackage{xcolor}
 \usepackage{hyperref}
 \usepackage{fontawesome5}
 \usepackage{parskip} % Adds space between paragraphs automatically
+
+% --- Force Justification + No Hyphenation ---
+\tolerance=1
+\emergencystretch=\maxdimen % Allows spaces to stretch to fill the line
+\hyphenpenalty=10000        % Disables hyphenation
+\hbadness=10000             % Suppresses "Underfull \hbox" warnings
 
 % --- Colors (Same as CV) ---
 \definecolor{primaryColor}{RGB}{30, 50, 80}
