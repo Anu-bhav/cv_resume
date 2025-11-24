@@ -1,3 +1,7 @@
-[CV](output/cv.pdf)
+# CV
 
-[Cover Letter](output/cover_letter.pdf)
+[![CV Preview](output/images/cv-side-by-side-border.png)](output/cv.pdf)
+
+# Cover Letter
+
+[![Cover Letter Preview](output/images/cover_letter.png)](output/cover_letter.pdf)
