@@ -1,0 +1,31 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Generate CV & Cover Letter Images",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-NoProfile",
+        "-Command",
+        // 1. Create directory if missing
+        "New-Item -ItemType Directory -Force -Path 'output\\images';",
+        // 2. Convert CV PDF to PNGs
+        "magick -density 300 'output\\cv.pdf' -background white -alpha remove 'output\\images\\cv-%d.png';",
+        // 3. Convert Cover Letter PDF to PNG
+        "magick -density 300 'output\\cover_letter.pdf' -background white -alpha remove 'output\\images\\cover_letter.png';",
+        // 4. Combine CV pages side-by-side with black border
+        "magick 'output\\images\\cv-0.png' -background black -gravity east -splice 5x0 'output\\images\\cv-1.png' +append 'output\\images\\cv-side-by-side-border.png'"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      }
+    }
+  ]
+}
