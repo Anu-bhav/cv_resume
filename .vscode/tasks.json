@@ -8,13 +8,15 @@
       "args": [
         "-NoProfile",
         "-Command",
-        // 1. Create directory if missing
-        "New-Item -ItemType Directory -Force -Path 'output\\images';",
-        // 2. Convert CV PDF to PNGs
+        // 1. Create directory if missing (ensures next step doesn't fail)
+        "New-Item -ItemType Directory -Force -Path 'output\\images' | Out-Null;",
+        // 2. Empty the directory (silently ignore errors if already empty)
+        "Remove-Item 'output\\images\\*' -Recurse -Force -ErrorAction SilentlyContinue;",
+        // 3. Convert CV PDF to PNGs
         "magick -density 300 'output\\cv.pdf' -background white -alpha remove 'output\\images\\cv-%d.png';",
-        // 3. Convert Cover Letter PDF to PNG
+        // 4. Convert Cover Letter PDF to PNG
         "magick -density 300 'output\\cover_letter.pdf' -background white -alpha remove 'output\\images\\cover_letter.png';",
-        // 4. Combine CV pages side-by-side with black border
+        // 5. Combine CV pages side-by-side with black border
         "magick 'output\\images\\cv-0.png' -background black -gravity east -splice 5x0 'output\\images\\cv-1.png' +append 'output\\images\\cv-side-by-side-border.png'"
       ],
       "group": {
