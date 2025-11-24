@@ -1,5 +1,5 @@
 **Anubhavsingh Sawdagur**
-Bras D'eau, Mauritius | +230 570 22654
+Bras D'eau, Mauritius | +230 5702 2654
 anubhav_s@outlook.com | github.com/Anu-bhav
 
 23 November 2025
